@@ -20,7 +20,7 @@ module.exports = {
 		const isAutoThreadingChannel = db.prepare("SELECT * FROM data WHERE channelId=?").get(message.channelId);
 		if (!isAutoThreadingChannel) return;
 		await message.startThread({
-			name: message.content.substring(0,99),
+			name: message.content.substring(0,99) || "Discussion",
 			autoArchiveDuration: "MAX"
 		})
 	},
